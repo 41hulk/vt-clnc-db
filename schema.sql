@@ -22,6 +22,30 @@ CREATE TABLE animals (
     
 );
 
+CREATE TABLE vets (
+    id                  SERIAL PRIMARY KEY,
+    name                VARCHAR(250),
+    age                 INT,
+    date_of_graduation  DATE
+);
+
+CREATE TABLE specializations (
+    id                  SERIAL PRIMARY KEY,
+    vet_id              INT,
+    species_id          INT,
+    CONSTRAINT fk_vet FOREIGN KEY(vet_id) REFERENCES vets(id),
+    CONSTRAINT fk_specializations_specie FOREIGN KEY(species_id) REFERENCES species(id)
+);
+
+CREATE TABLE visits (
+    id                  SERIAL PRIMARY KEY,
+    vet_id              INT,
+    animal_id          INT,
+    date_of_visit        DATE,
+    CONSTRAINT fk_vet FOREIGN KEY(vet_id) REFERENCES vets(id),
+    CONSTRAINT fk_visits_specie FOREIGN KEY(animal_id) REFERENCES animals(id)
+);
+
 ALTER TABLE animals ADD COLUMN species VARCHAR(250);
 
 ALTER TABLE animals REMOVE species;
