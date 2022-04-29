@@ -39,7 +39,7 @@ INSERT INTO owners (
   age
 ) VALUES (
   'Dean Winchester',
-  38
+  14
 );
 
 INSERT INTO owners (
@@ -47,7 +47,7 @@ INSERT INTO owners (
   age
 ) VALUES (
   'Jodie Whittaker',
-  14
+  38
 );
 
 -- INSERT animals

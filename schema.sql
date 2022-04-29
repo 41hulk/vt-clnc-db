@@ -19,13 +19,13 @@ CREATE TABLE animals (
     neutered            BOOLEAN,
     weight_kg           DECIMAL,
     PRIMARY KEY(id)
-    CONSTRAINT fk_specie
-        FOREIGN KEY(species_id)
-            REFERENCES species(id),
-    CONSTRAINT fk_owner
-        FOREIGN KEY(owner_id)
-            REFERENCES owners(id)
+    
 );
 
 ALTER TABLE animals ADD COLUMN species VARCHAR(250);
+
+ALTER TABLE animals DROP species;
+
+ALTER TABLE animals ADD species_id INT REFERENCES species(id);
+ALTER TABLE animals ADD owner_id INT REFERENCES owners(id);
  
